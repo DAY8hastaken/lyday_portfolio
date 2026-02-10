@@ -1,0 +1,21 @@
+---
+title: "My Portfolio"
+---
+
+# Hi, I'm Lyday 👋
+
+Welcome to my personal website.
+
+I am a student interested in technology and problem solving.
+
+## 🛠 Skills
+- Programming
+- Mathematics
+- Data Analysis
+
+## 📂 Projects
+- Employee Management System
+- School assignments
+
+## 📞 Contact
+Email: yourname@email.com

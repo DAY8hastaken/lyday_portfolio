@@ -1,0 +1,45 @@
+---
+title: "My Project"
+---
+
+# My Projects
+
+## 👟 Shoes Management & E-Commerce System (Django + MySQL)
+
+Developed a full-stack web platform where users can browse and purchase shoes, while staff manage inventory through an admin dashboard.
+
+- Built backend using Django framework  
+- Integrated MySQL database with Django ORM  
+- Implemented product management and order system  
+- Designed admin dashboard for inventory control  
+
+---
+
+## ♻️ Waste Classification System (Django + Machine Learning + IoT)
+
+Created an intelligent waste classification platform that automatically identifies trash types from uploaded images.
+
+- Used CNN deep learning models (MobileNetV2 & ResNet50)  
+- Achieved **93.88% accuracy** with MobileNetV2  
+- Built a web interface for image uploads and predictions  
+- Combined AI system with IoT-based data flow  
+
+---
+
+## 🏠 House Rent Price Prediction (Data Science)
+
+Developed a machine learning system to predict house rental prices.
+
+- Collected and cleaned **20,000+ rental records**  
+- Trained ML models for price prediction  
+- Built visualizations to analyze trends and patterns  
+
+---
+
+## 🌐 Internet Speed Mathematical Modeling
+
+Designed a mathematical model to analyze and predict internet performance across campus.
+
+- Modeled network performance using mathematical techniques  
+- Identified fastest network zones  
+- Helped optimize service usage and planning  

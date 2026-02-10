@@ -1,0 +1,72 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About Me",
+    "section": "",
+    "text": "I am a student learning about programming, math, and problem solving.\nI enjoy building systems and websites."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "My Portfolio",
+    "section": "",
+    "text": "Welcome to my personal website.\nI am a student interested in technology and problem solving.\n\n\n\nProgramming\nMathematics\nData Analysis\n\n\n\n\n\nEmployee Management System\nSchool assignments\n\n\n\n\nEmail: yourname@email.com"
+  },
+  {
+    "objectID": "index.html#skills",
+    "href": "index.html#skills",
+    "title": "My Portfolio",
+    "section": "",
+    "text": "Programming\nMathematics\nData Analysis"
+  },
+  {
+    "objectID": "index.html#projects",
+    "href": "index.html#projects",
+    "title": "My Portfolio",
+    "section": "",
+    "text": "Employee Management System\nSchool assignments"
+  },
+  {
+    "objectID": "index.html#contact",
+    "href": "index.html#contact",
+    "title": "My Portfolio",
+    "section": "",
+    "text": "Email: yourname@email.com"
+  },
+  {
+    "objectID": "My_project.html",
+    "href": "My_project.html",
+    "title": "My Project",
+    "section": "",
+    "text": "Developed a full-stack web platform where users can browse and purchase shoes, while staff manage inventory through an admin dashboard.\n\nBuilt backend using Django framework\n\nIntegrated MySQL database with Django ORM\n\nImplemented product management and order system\n\nDesigned admin dashboard for inventory control\n\n\n\n\n\nCreated an intelligent waste classification platform that automatically identifies trash types from uploaded images.\n\nUsed CNN deep learning models (MobileNetV2 & ResNet50)\n\nAchieved 93.88% accuracy with MobileNetV2\n\nBuilt a web interface for image uploads and predictions\n\nCombined AI system with IoT-based data flow\n\n\n\n\n\nDeveloped a machine learning system to predict house rental prices.\n\nCollected and cleaned 20,000+ rental records\n\nTrained ML models for price prediction\n\nBuilt visualizations to analyze trends and patterns\n\n\n\n\n\nDesigned a mathematical model to analyze and predict internet performance across campus.\n\nModeled network performance using mathematical techniques\n\nIdentified fastest network zones\n\nHelped optimize service usage and planning"
+  },
+  {
+    "objectID": "My_project.html#shoes-management-e-commerce-system-django-mysql",
+    "href": "My_project.html#shoes-management-e-commerce-system-django-mysql",
+    "title": "My Project",
+    "section": "",
+    "text": "Developed a full-stack web platform where users can browse and purchase shoes, while staff manage inventory through an admin dashboard.\n\nBuilt backend using Django framework\n\nIntegrated MySQL database with Django ORM\n\nImplemented product management and order system\n\nDesigned admin dashboard for inventory control"
+  },
+  {
+    "objectID": "My_project.html#waste-classification-system-django-machine-learning-iot",
+    "href": "My_project.html#waste-classification-system-django-machine-learning-iot",
+    "title": "My Project",
+    "section": "",
+    "text": "Created an intelligent waste classification platform that automatically identifies trash types from uploaded images.\n\nUsed CNN deep learning models (MobileNetV2 & ResNet50)\n\nAchieved 93.88% accuracy with MobileNetV2\n\nBuilt a web interface for image uploads and predictions\n\nCombined AI system with IoT-based data flow"
+  },
+  {
+    "objectID": "My_project.html#house-rent-price-prediction-data-science",
+    "href": "My_project.html#house-rent-price-prediction-data-science",
+    "title": "My Project",
+    "section": "",
+    "text": "Developed a machine learning system to predict house rental prices.\n\nCollected and cleaned 20,000+ rental records\n\nTrained ML models for price prediction\n\nBuilt visualizations to analyze trends and patterns"
+  },
+  {
+    "objectID": "My_project.html#internet-speed-mathematical-modeling",
+    "href": "My_project.html#internet-speed-mathematical-modeling",
+    "title": "My Project",
+    "section": "",
+    "text": "Designed a mathematical model to analyze and predict internet performance across campus.\n\nModeled network performance using mathematical techniques\n\nIdentified fastest network zones\n\nHelped optimize service usage and planning"
+  }
+]
