@@ -188,83 +188,174 @@ section h2 {
   background:white;
 }
 
-.projects-grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
-  gap:30px;
-  max-width:1200px;
-  margin:0 auto;
+/* NEW PROJECTS LAYOUT */
+.projects-container {
+  display: flex;
+  gap: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: 600px;
 }
 
-.project-card {
-  background:white;
-  padding:40px;
-  border-radius:20px;
-  box-shadow:0 10px 40px rgba(0,0,0,0.08);
-  transition:all 0.3s ease;
-  border:1px solid #f0f0f0;
-  text-align:left;
+/* LEFT SIDE - PROJECT LIST */
+.projects-list {
+  flex: 0 0 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-.project-card:hover {
-  transform:translateY(-10px);
-  box-shadow:0 20px 60px rgba(0,0,0,0.2);
+.project-item {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  border: 2px solid #e0e0e0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
-.project-icon {
-  width:60px;
-  height:60px;
-  background:linear-gradient(135deg, #000 0%, #555 100%);
-  border-radius:12px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:28px;
-  margin-bottom:20px;
+.project-item:hover {
+  border-color: #333;
+  transform: translateX(10px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
 }
 
-.project-card h3 {
-  font-size:24px;
-  margin-bottom:15px;
-  color:#222;
+.project-item.active {
+  border-color: #000;
+  background: linear-gradient(135deg, #f8f8f8 0%, #fff 100%);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  transform: translateX(10px);
 }
 
-.project-card p {
-  color:#666;
-  line-height:1.6;
+.project-item h3 {
+  font-size: 18px;
+  color: #222;
+  margin-bottom: 8px;
+  font-weight: 600;
 }
 
-#contact {
-  background:linear-gradient(180deg, white 0%, #f5f5f5 100%);
+.project-item .status {
+  font-size: 13px;
+  color: #059669;
+  font-weight: 600;
+  display: inline-block;
+  padding: 4px 12px;
+  background: #d1fae5;
+  border-radius: 12px;
 }
 
-.contact-info {
-  display:flex;
-  flex-direction:column;
-  gap:20px;
-  align-items:center;
+/* RIGHT SIDE - PROJECT DETAILS */
+.project-details {
+  flex: 1;
+  background: white;
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+  border: 1px solid #f0f0f0;
 }
 
-.contact-item {
-  display:flex;
-  align-items:center;
-  gap:15px;
-  font-size:20px;
-  color:#555;
+.project-details.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 20px;
 }
 
-.contact-item a {
-  color:#333;
-  text-decoration:none;
-  font-weight:600;
-  transition:color 0.3s ease;
+.project-details h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  text-align: left;
+  background: linear-gradient(135deg, #000 0%, #555 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.contact-item a:hover {
-  color:#000;
+.project-count {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 25px;
+  padding: 15px 0;
+  border-bottom: 2px solid #f0f0f0;
 }
 
-/* ANIMATIONS - Keep these for other elements */
+.count-number {
+  font-size: 48px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #000 0%, #555 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.count-label {
+  font-size: 18px;
+  color: #666;
+  font-weight: 500;
+}
+
+.project-details .tech-stack {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.project-details .tech-tag {
+  padding: 8px 16px;
+  background: #f0f0f0;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #555;
+}
+
+.project-details .description {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.project-details h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  margin-top: 30px;
+  color: #222;
+}
+
+.project-details ul {
+  list-style: none;
+  padding: 0;
+}
+
+.project-details ul li {
+  padding: 12px 0;
+  padding-left: 30px;
+  position: relative;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #666;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.project-details ul li:last-child {
+  border-bottom: none;
+}
+
+.project-details ul li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #059669;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* ANIMATIONS */
 @keyframes fadeInLeft {
   from { opacity:0; transform:translateX(-50px); }
   to { opacity:1; transform:translateX(0); }
@@ -314,6 +405,19 @@ section h2 {
     width:300px;
     height:300px;
   }
+
+  .projects-container {
+    flex-direction: column;
+  }
+
+  .projects-list {
+    flex: 1;
+  }
+
+  .project-item:hover,
+  .project-item.active {
+    transform: translateX(0);
+  }
 }
 
 @media (max-width:600px){
@@ -330,8 +434,128 @@ section h2 {
     width:100%;
     text-align:center;
   }
+
+  .project-details {
+    padding: 30px 20px;
+  }
 }
 </style>
+
+<script>
+const projectCategories = [
+  {
+    id: 1,
+    category: "Math Modeling",
+    count: 2,
+    icon: "📐",
+    description: "Applied mathematical concepts to solve real-world optimization and modeling problems using advanced techniques.",
+    skills: [
+      "Build mathematical models for complex problems",
+      "Apply linear programming and optimization",
+      "Use differential equations for simulations",
+      "Analyze and interpret mathematical results",
+      "Create efficient algorithms for calculations"
+    ],
+    technologies: ["Python", "MATLAB", "NumPy", "SciPy", "Mathematical Modeling"]
+  },
+  {
+    id: 2,
+    category: "Website Development",
+    count: 2,
+    icon: "💻",
+    description: "Developed full-stack web applications with modern frameworks, focusing on user experience and scalable architecture.",
+    skills: [
+      "Build responsive web applications with Django",
+      "Design and implement database schemas",
+      "Create user authentication systems",
+      "Develop admin dashboards and management tools",
+      "Deploy and maintain web applications"
+    ],
+    technologies: ["Django", "MySQL", "HTML", "CSS", "JavaScript", "Bootstrap"]
+  },
+  {
+    id: 3,
+    category: "Machine Learning",
+    count: 4,
+    icon: "🤖",
+    description: "Built AI and machine learning models for classification, prediction, and computer vision tasks with high accuracy.",
+    skills: [
+      "Train deep learning models (CNN, ResNet, MobileNet)",
+      "Perform data preprocessing and feature engineering",
+      "Build classification and regression models",
+      "Optimize model accuracy and performance",
+      "Deploy ML models in production environments"
+    ],
+    technologies: ["Python", "TensorFlow", "Scikit-learn", "Pandas", "CNN", "Transfer Learning"]
+  },
+  {
+    id: 4,
+    category: "Financial Engineering",
+    count: 2,
+    icon: "💰",
+    description: "Applied financial theories and quantitative methods to analyze markets, optimize portfolios, and price derivatives.",
+    skills: [
+      "Perform portfolio optimization and risk analysis",
+      "Implement option pricing models (Black-Scholes)",
+      "Analyze financial data and market trends",
+      "Build financial forecasting models",
+      "Apply quantitative methods to trading strategies"
+    ],
+    technologies: ["Python", "Financial Modeling", "Risk Analysis", "Derivatives Pricing"]
+  },
+  {
+    id: 5,
+    category: "Statistical Analysis",
+    count: 1,
+    icon: "📊",
+    description: "Conducted comprehensive statistical analysis and data visualization to extract meaningful insights from complex datasets.",
+    skills: [
+      "Perform exploratory data analysis (EDA)",
+      "Apply statistical testing and hypothesis testing",
+      "Create insightful data visualizations",
+      "Identify patterns and trends in data",
+      "Present statistical findings clearly"
+    ],
+    technologies: ["Python", "Pandas", "Matplotlib", "Seaborn", "Statistical Methods"]
+  }
+];
+
+function showCategory(categoryId) {
+  const category = projectCategories.find(c => c.id === categoryId);
+  const detailsDiv = document.getElementById('project-details');
+  
+  // Remove active class from all items
+  document.querySelectorAll('.project-item').forEach(item => {
+    item.classList.remove('active');
+  });
+  
+  // Add active class to clicked item
+  event.target.closest('.project-item').classList.add('active');
+  
+  // Show category details
+  detailsDiv.classList.remove('empty');
+  detailsDiv.innerHTML = `
+    <h2>${category.icon} ${category.category}</h2>
+    
+    <div class="project-count">
+      <span class="count-number">${category.count}</span>
+      <span class="count-label">Project${category.count > 1 ? 's' : ''} Completed</span>
+    </div>
+    
+    <div class="tech-stack">
+      ${category.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+    </div>
+    
+    <p class="description">${category.description}</p>
+    
+    <h3>What I Can Help You With:</h3>
+    <ul>
+      ${category.skills.map(skill => `<li>${skill}</li>`).join('')}
+    </ul>
+  `;
+}
+</script>
+
 </head>
 
 <body>
@@ -358,7 +582,7 @@ fetch("navbar.html")
     <p class="role">Financial Engineering & Data Science Student</p>
     <div class="cta-buttons">
       <a href="#projects" class="btn btn-primary">View Projects</a>
-      <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+      <a href="contact.html" class="btn btn-secondary">Get in Touch</a>
     </div>
   </div>
 
@@ -377,42 +601,40 @@ fetch("navbar.html")
 </section>
 
 <section id="projects">
-  <h2>Projects</h2>
-  <div class="projects-grid">
-    <div class="project-card">
-      <div class="project-icon">🤖</div>
-      <h3>Machine Learning Systems</h3>
-      <p>Developed predictive models and intelligent algorithms for financial forecasting and data analysis.</p>
-    </div>
-    <div class="project-card">
-      <div class="project-icon">💻</div>
-      <h3>Web Applications</h3>
-      <p>Built modern, responsive web applications with focus on user experience and performance.</p>
-    </div>
-    <div class="project-card">
-      <div class="project-icon">📊</div>
-      <h3>Data Analytics</h3>
-      <p>Created data-driven solutions for extracting insights and solving complex business problems.</p>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <h2>Contact Me</h2>
-  <div class="card">
-    <div class="contact-info">
-      <div class="contact-item">
-        <span>📧</span>
-        <a href="mailto:your@email.com">your@email.com</a>
+  <h2>My Projects</h2>
+  
+  <div class="projects-container">
+    <!-- LEFT: PROJECT LIST -->
+    <div class="projects-list">
+      <div class="project-item" onclick="showCategory(1)">
+        <h3>📐 Math Modeling</h3>
+        <span class="status">2 Projects</span>
       </div>
-      <div class="contact-item">
-        <span>💼</span>
-        <a href="https://github.com/yourname" target="_blank">github.com/yourname</a>
+      
+      <div class="project-item" onclick="showCategory(2)">
+        <h3>💻 Website Development</h3>
+        <span class="status">2 Projects</span>
       </div>
-      <div class="contact-item">
-        <span>🔗</span>
-        <a href="https://linkedin.com/in/yourname" target="_blank">LinkedIn Profile</a>
+      
+      <div class="project-item" onclick="showCategory(3)">
+        <h3>🤖 Machine Learning</h3>
+        <span class="status">4 Projects</span>
       </div>
+      
+      <div class="project-item" onclick="showCategory(4)">
+        <h3>💰 Financial Engineering</h3>
+        <span class="status">2 Projects</span>
+      </div>
+      
+      <div class="project-item" onclick="showCategory(5)">
+        <h3>📊 Statistical Analysis</h3>
+        <span class="status">1 Project</span>
+      </div>
+    </div>
+    
+    <!-- RIGHT: PROJECT DETAILS -->
+    <div id="project-details" class="project-details empty">
+      Click on a project to see details
     </div>
   </div>
 </section>

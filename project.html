@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects - Hem Bellyday</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+  color: #222;
+  overflow-x: hidden;
+}
+
+/* PAGE HEADER */
+.page-header {
+  text-align: center;
+  padding: 140px 40px 80px 40px;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="2" height="2" fill="rgba(255,255,255,0.1)"/></svg>');
+  opacity: 0.3;
+}
+
+.page-header h1 {
+  font-size: 56px;
+  font-weight: 800;
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 0.8s ease;
+}
+
+.page-header p {
+  font-size: 20px;
+  color: #aaa;
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 0.8s ease 0.2s backwards;
+}
+
+.total-count {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 30px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: fadeInUp 0.8s ease 0.4s backwards;
+}
+
+/* PROJECTS CONTAINER */
+.projects-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 40px;
+}
+
+/* CATEGORY SECTION */
+.category-section {
+  margin-bottom: 80px;
+  animation: fadeInUp 1s ease;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+.category-section:nth-child(1) { animation-delay: 0.1s; }
+.category-section:nth-child(2) { animation-delay: 0.2s; }
+.category-section:nth-child(3) { animation-delay: 0.3s; }
+.category-section:nth-child(4) { animation-delay: 0.4s; }
+.category-section:nth-child(5) { animation-delay: 0.5s; }
+
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 3px solid #ddd;
+}
+
+.category-icon {
+  font-size: 42px;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+}
+
+.category-title {
+  flex: 1;
+}
+
+.category-title h2 {
+  font-size: 32px;
+  font-weight: 800;
+  color: #222;
+  margin-bottom: 5px;
+}
+
+.category-count {
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+}
+
+/* PROJECT GRID */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
+}
+
+/* PROJECT CARD */
+.project-card {
+  background: white;
+  border-radius: 20px;
+  padding: 35px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid #f0f0f0;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #000 0%, #555 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.project-card:hover::before {
+  transform: scaleX(1);
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  border-color: #ddd;
+}
+
+.project-number {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #555;
+}
+
+.project-card h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 15px;
+  line-height: 1.4;
+  padding-right: 50px;
+}
+
+.project-card p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.project-meta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.meta-tag {
+  padding: 6px 14px;
+  background: #f5f5f5;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #555;
+  transition: all 0.3s ease;
+}
+
+.project-card:hover .meta-tag {
+  background: #e8e8e8;
+}
+
+/* CATEGORY SPECIFIC COLORS */
+.math-modeling .project-card::before {
+  background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
+}
+
+.machine-learning .project-card::before {
+  background: linear-gradient(90deg, #8b5cf6 0%, #7c3aed 100%);
+}
+
+.web-projects .project-card::before {
+  background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+}
+
+.financial-modeling .project-card::before {
+  background: linear-gradient(90deg, #f59e0b 0%, #d97706 100%);
+}
+
+.statistical-analysis .project-card::before {
+  background: linear-gradient(90deg, #ef4444 0%, #dc2626 100%);
+}
+
+/* ANIMATIONS */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .page-header {
+    padding: 120px 30px 60px 30px;
+  }
+
+  .page-header h1 {
+    font-size: 36px;
+  }
+
+  .page-header p {
+    font-size: 16px;
+  }
+
+  .projects-container {
+    padding: 60px 20px;
+  }
+
+  .category-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .category-title h2 {
+    font-size: 26px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card {
+    padding: 25px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="navbar"></div>
+<script>
+fetch("navbar.html")
+  .then(r => r.text())
+  .then(html => {
+    document.getElementById("navbar").innerHTML = html;
+    const scripts = document.getElementById("navbar").querySelectorAll("script");
+    scripts.forEach(script => {
+      const newScript = document.createElement("script");
+      newScript.textContent = script.textContent;
+      document.body.appendChild(newScript);
+    });
+  });
+</script>
+
+<div class="page-header">
+  <h1>My Project Portfolio</h1>
+  <p>A collection of data science, web development, and analytical projects</p>
+  <div class="total-count">11 Completed Projects</div>
+</div>
+
+<div class="projects-container">
+
+  <!-- MATH MODELING -->
+  <div class="category-section math-modeling">
+    <div class="category-header">
+      <div class="category-icon">📐</div>
+      <div class="category-title">
+        <h2>Math Modeling</h2>
+        <p class="category-count">2 Projects</p>
+      </div>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-number">01</div>
+        <h3>Bouncing Ball Simulation</h3>
+        <p>Mathematical model simulating ball physics, calculating trajectory, velocity, and energy loss after each bounce using kinematic equations.</p>
+        <div class="project-meta">
+          <span class="meta-tag">Physics</span>
+          <span class="meta-tag">Simulation</span>
+          <span class="meta-tag">Python</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-number">02</div>
+        <h3>WiFi Speed Analysis</h3>
+        <p>Analyzed how internet speed varies with user load and signal distance across campus, identifying optimal network zones for better connectivity.</p>
+        <div class="project-meta">
+          <span class="meta-tag">Network Analysis</span>
+          <span class="meta-tag">Data Collection</span>
+          <span class="meta-tag">Optimization</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MACHINE LEARNING -->
+  <div class="category-section machine-learning">
+    <div class="category-header">
+      <div class="category-icon">🤖</div>
+      <div class="category-title">
+        <h2>Machine Learning</h2>
+        <p class="category-count">4 Projects</p>
+      </div>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-number">03</div>
+        <h3>House Rent Prediction</h3>
+        <p>Built regression models to predict rental prices using property features like location, size, and amenities. Achieved accurate predictions on 20K+ listings.</p>
+        <div class="project-meta">
+          <span class="meta-tag">Regression</span>
+          <span class="meta-tag">Scikit-learn</span>
+          <span class="meta-tag">Real Estate</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-number">04</div>
+        <h3>Waste Classification System</h3>
+        <p>Deep learning image classifier identifying waste types automatically. Used CNN with MobileNetV2 and ResNet50, achieving 93.88% accuracy.</p>
+        <div class="project-meta">
+          <span class="meta-tag">CNN</span>
+          <span class="meta-tag">Computer Vision</span>
+          <span class="meta-tag">TensorFlow</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-number">05</div>
+        <h3>Company Profit Prediction</h3>
+        <p>Time series forecasting model predicting company profitability based on historical financial data, market trends, and economic indicators.</p>
+        <div class="project-meta">
+          <span class="meta-tag">Time Series</span>
+          <span class="meta-tag">Forecasting</span>
+          <span class="meta-tag">Finance</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-number">06</div>
+        <h3>Loan Approval Prediction</h3>
+        <p>Classification model determining loan approval decisions using applicant data like income, credit history, and employment status with high precision.</p>
+        <div class="project-meta">
+          <span class="meta-tag">Classification</span>
+          <span class="meta-tag">Risk Analysis</span>
+          <span class="meta-tag">Banking</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEB PROJECTS -->
+  <div class="category-section web-projects">
+    <div class="category-header">
+      <div class="category-icon">🌐</div>
+      <div class="category-title">
+        <h2>Web Development</h2>
+        <p class="category-count">2 Projects</p>
+      </div>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-number">07</div>
+        <h3>Shoe Shop Website</h3>
+        <p>Full-stack e-commerce platform for browsing and purchasing shoes online. Features include product catalog, shopping cart, and admin inventory management.</p>
+        <div class="project-meta">
+          <span class="meta-tag">Django</span>
+          <span class="meta-tag">MySQL</span>
+          <span class="meta-tag">E-Commerce</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-number">08</div>
+        <h3>E-Commerce Platform</h3>
+        <p>Comprehensive online shopping system with user authentication, payment gateway integration, order tracking, and responsive design for all devices.</p>
+        <div class="project-meta">
+          <span class="meta-tag">Full Stack</span>
+          <span class="meta-tag">Payment Gateway</span>
+          <span class="meta-tag">Responsive</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FINANCIAL MODELING -->
+  <div class="category-section financial-modeling">
+    <div class="category-header">
+      <div class="category-icon">💰</div>
+      <div class="category-title">
+        <h2>Financial Engineering</h2>
+        <p class="category-count">2 Projects</p>
+      </div>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-number">09</div>
+        <h3>Bond Pricing Analysis</h3>
+        <p>Analyzed the inverse relationship between interest rates and bond prices. Built models showing how bond valuations respond to rate changes in the market.</p>
+        <div class="project-meta">
+          <span class="meta-tag">Fixed Income</span>
+          <span class="meta-tag">Interest Rates</span>
+          <span class="meta-tag">Valuation</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-number">10</div>
+        <h3>FX Options Pricing</h3>
+        <p>Implemented Black-Scholes model for currency option pricing. Calculated fair value of FX options considering volatility, time to expiry, and spot rates.</p>
+        <div class="project-meta">
+          <span class="meta-tag">Black-Scholes</span>
+          <span class="meta-tag">Derivatives</span>
+          <span class="meta-tag">FX Markets</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATISTICAL ANALYSIS -->
+  <div class="category-section statistical-analysis">
+    <div class="category-header">
+      <div class="category-icon">📊</div>
+      <div class="category-title">
+        <h2>Statistical Analysis</h2>
+        <p class="category-count">1 Project</p>
+      </div>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-number">11</div>
+        <h3>Insurance Cost Prediction</h3>
+        <p>Statistical model predicting insurance premiums based on customer risk factors including age, health conditions, lifestyle habits, and claim history.</p>
+        <div class="project-meta">
+          <span class="meta-tag">Regression Analysis</span>
+          <span class="meta-tag">Risk Modeling</span>
+          <span class="meta-tag">Insurance</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

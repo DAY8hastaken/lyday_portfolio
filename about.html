@@ -16,12 +16,11 @@
 body {
   background: #2a2a2a;
   min-height: 100vh;
-  padding-top: 80px;
 }
 
 .resume-container {
   max-width: 1400px;
-  margin: 60px auto;
+  margin: 140px auto 60px auto;
   display: flex;
   box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
   animation: fadeIn 1s ease forwards;
@@ -324,14 +323,22 @@ fetch("navbar.html")
   .then(r => r.text())
   .then(html => {
     document.getElementById("navbar").innerHTML = html;
-    const scripts = document.getElementById("navbar").querySelectorAll("script");
+    
+    // Extract and execute scripts from the loaded HTML
+    const navbarDiv = document.getElementById("navbar");
+    const scripts = navbarDiv.querySelectorAll("script");
     scripts.forEach(script => {
       const newScript = document.createElement("script");
-      newScript.textContent = script.textContent;
+      if (script.src) {
+        newScript.src = script.src;
+      } else {
+        newScript.textContent = script.textContent;
+      }
       document.body.appendChild(newScript);
     });
   });
 </script>
+
 <div class="resume-container">
   <!-- LEFT SIDEBAR -->
   <div class="left-sidebar">
@@ -347,7 +354,7 @@ fetch("navbar.html")
       </div>
       <div class="contact-item">
         <span>📧</span>
-        <div>hembellyday@gmail.com</div>
+        <div><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e8808d858a8d8484918c8991a88f85898184c68b8785">[email&#160;protected]</a></div>
       </div>
       <div class="contact-item">
         <span>📍</span>
@@ -450,11 +457,3 @@ fetch("navbar.html")
     <div class="content-section">
       <h3>Volunteer</h3>
       <div class="volunteer-item">
-        <h4>Blood Donation Event - Volunteer Participant (2024)</h4>
-      </div>
-    </div>
-  </div>
-</div>
-
-</body>
-</html>
