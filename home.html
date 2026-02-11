@@ -337,8 +337,19 @@ section h2 {
 <body>
 
 <div id="navbar"></div>
-<script>fetch("navbar.html").then(r=>r.text()).then(d=>document.getElementById("navbar").innerHTML=d);</script>
-
+<script>
+fetch("navbar.html")
+  .then(r => r.text())
+  .then(html => {
+    document.getElementById("navbar").innerHTML = html;
+    const scripts = document.getElementById("navbar").querySelectorAll("script");
+    scripts.forEach(script => {
+      const newScript = document.createElement("script");
+      newScript.textContent = script.textContent;
+      document.body.appendChild(newScript);
+    });
+  });
+</script>
 
 <div class="hero">
   <div class="hero-left">
