@@ -139,6 +139,7 @@
   gap: 5px;
   cursor: pointer;
   padding: 10px;
+  z-index: 1001;
 }
 
 .hamburger span {
@@ -153,6 +154,19 @@
   background: #ffffff;
 }
 
+/* Hamburger animation when active */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
 /* Mobile responsive */
 @media (max-width: 768px) {
   .navbar {
@@ -165,21 +179,25 @@
 
   .nav-links {
     position: fixed;
-    left: -100%;
     top: 77px;
+    left: 0;
+    right: 0;
     flex-direction: column;
     background: linear-gradient(135deg, rgba(20, 20, 20, 0.98) 0%, rgba(35, 35, 35, 0.98) 100%);
     backdrop-filter: blur(15px);
     width: 100%;
     text-align: center;
-    transition: left 0.4s ease;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-    padding: 30px 0;
+    padding: 0;
     gap: 0;
   }
 
   .nav-links.active {
-    left: 0;
+    max-height: 500px;
+    padding: 30px 0;
   }
 
   .nav-links a {
@@ -197,41 +215,55 @@
 <div class="navbar">
   <div class="logo">Lyday</div>
 
-  <div class="hamburger" onclick="toggleMenu()">
+  <div class="hamburger" id="menuToggle">
     <span></span>
     <span></span>
     <span></span>
   </div>
 
-  <div class="nav-links" id="navLinks">
-    <a href="home.html" class="active">Home</a>
-    <a href="resume.html">About</a>
+  <div class="nav-links" id="mobileMenu">
+    <a href="home.html">Home</a>
+    <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
   </div>
 </div>
 
 <script>
-function toggleMenu() {
-  const navLinks = document.getElementById('navLinks');
-  navLinks.classList.toggle('active');
-}
-
-// Close menu when clicking outside
-document.addEventListener('click', function(event) {
-  const navbar = document.querySelector('.navbar');
-  const navLinks = document.getElementById('navLinks');
-  
-  if (!navbar.contains(event.target)) {
-    navLinks.classList.remove('active');
-  }
-});
-
-// Close menu when clicking a link (mobile)
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', function() {
-    if (window.innerWidth <= 768) {
-      document.getElementById('navLinks').classList.remove('active');
+(function() {
+  // Use setTimeout to ensure DOM is fully loaded
+  setTimeout(function() {
+    var menuToggle = document.getElementById('menuToggle');
+    var mobileMenu = document.getElementById('mobileMenu');
+    
+    if (menuToggle && mobileMenu) {
+      // Toggle menu on hamburger click
+      menuToggle.onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        mobileMenu.classList.toggle('active');
+        menuToggle.classList.toggle('active');
+      };
+      
+      // Close menu when clicking outside
+      document.onclick = function(event) {
+        var navbar = document.querySelector('.navbar');
+        if (navbar && !navbar.contains(event.target)) {
+          mobileMenu.classList.remove('active');
+          menuToggle.classList.remove('active');
+        }
+      };
+      
+      // Close menu when clicking a link
+      var links = mobileMenu.querySelectorAll('a');
+      for (var i = 0; i < links.length; i++) {
+        links[i].onclick = function() {
+          if (window.innerWidth <= 768) {
+            mobileMenu.classList.remove('active');
+            menuToggle.classList.remove('active');
+          }
+        };
+      }
     }
-  });
-});
+  }, 100);
+})();
 </script>
